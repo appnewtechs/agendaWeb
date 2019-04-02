@@ -1,0 +1,39 @@
+.table{
+  margin-bottom: 0px;
+}
+.card{
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 5px;
+}
+.card-header{
+  margin-bottom: 5px;
+}
+img{
+  margin: 0 auto;
+  margin-bottom: 100px;
+}
+.assinatura-wrap{
+    display: block !important;
+    visibility: visible !important;
+    width: 500px;
+    /*margin-left: 225px;*/
+    height: 60px;
+    margin-top: 100px;
+    float: right;
+}
+.assinatura-wrap .adm{
+    border-top: 1px solid black;
+    float: left;
+    width: 200px;
+    padding: 10px;
+    padding-left: 45px;
+}
+.assinatura-wrap .fin{
+    border-top: 1px solid black;
+    float: left;
+    width: 200px;
+    padding: 10px;
+    padding-left: 65px;
+    margin-left: 100px;
+}

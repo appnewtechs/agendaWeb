@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Gestão de Indicadores</title>		
+
+	<link rel="StyleSheet" href="css/bootstrap.min.css">
+	<link rel="StyleSheet" href="css/index.css">
+
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+</head>	
+<body>
+
+<!-- 1.0 CABEÇALHO E MENU - INÍCIO -->
+
+<header>
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+	    <div class="container-fluid">
+	    	<div class="navbar-header">
+	        	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
+	        		<span class="icon-bar"></span>
+	          		<span class="icon-bar"></span>
+	          		<span class="icon-bar"></span>
+	        		</button>
+	        	<a href="dia.html" class="navbar-brand logotipo">
+	          		<img src="img/logo-new.png" alt="NewTech">
+	        	</a>
+	      	</div>
+	      	<div class="collapse navbar-collapse" id="menu">
+		        <ul class="nav navbar-nav lista">
+			       	<li><a href="dia.html">Dia</a></li>
+			       	<li><a href="mes.html">Mês</a></li>
+			       	<li><a href="ano.html">Ano</a></li>
+					<!-- Menu DropDown com opções de Comparativo --> 
+					<li class="dropdown">
+			        	<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Comparativos<span class="caret"></span> </a>
+				        <ul class="dropdown-menu">
+				        	
+				        	<li><a href="comparativos_hoje.html" data-toggle="modal" data-target=".bs-comparativoshoje-modal-sm">Hoje</a></li>
+				        	<li><a href="comparativos_dia.html" data-toggle="modal" data-target=".bs-comparativosdias-modal-lg">Dias X Lojas</a></li>
+				        	<li><a href="comparativos_mes.html" data-toggle="modal" data-target=".bs-comparativosmeses-modal-lg">Meses X Lojas</a></li>
+				        </ul>
+			      	</li>	
+			      	<!-- Menu DropDown com opções de Comparativo -->	
+	        		<li><a href="" data-toggle="modal" data-target=".bs-jornada-modal-sm">Jornada</a></li>
+	         		<li><a href="" data-toggle="modal" data-target=".bs-loja-modal-sm">Loja</a></li>
+	        	</ul>
+	        	<ul class="nav navbar-nav navbar-right">
+	        		<li><a href="login.html">Sair</a></li>
+	    		</ul>
+	      	</div>
+	    </div>
+	 </nav>
+
+<!-- 1.1 INÍCIO MODAL COMPARATIVO DIAS -->	
+
+<div class="modal fade bs-comparativosdias-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="exampleModalLabel">Comparativos</h4>
+	</div>
+
+	<div class="modal-body">
+		<div class="container-fluid">
+  			<div class="row">
+  			<!-- 1.1.1 INÍCIO Comparativo de Dias -->
+  				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="panel panel-primary">
+						
+						<div class="panel-heading">
+							<h3 class="panel-title">Comparar Dias</h3>
+						</div>
+						<form>
+							<div class="panel-body">
+								<div class="row col-xs-12 col-sm-12 col-md-6 col-lg-6">	
+
+									<div class="form-check">
+		  								<label class="form-check-label">
+		    							<input class="form-check-input" type="checkbox" value="">
+		    							Loja 1 - São Bernardo do Campo
+		  								</label>
+									</div>
+		    						
+		    						<div class="form-check">
+		  								<label class="form-check-label">
+		    							<input class="form-check-input" type="checkbox" value="">
+		    							Loja 2 - São Caetano do Sul
+		  								</label>
+									</div>
+									<br>
+								</div>	
+
+								<div class="row col-xs-12 col-sm-12 col-md-6 col-lg-6">	
+								
+									<div class="form-group row">
+										<label for="example-date-input" class="col-xs-2 col-form-label">De:</label>
+										<div class="col-xs-10">
+											<input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+										</div>
+									</div>
+									
+									<div class="form-group row">
+										<label for="example-date-input" class="col-xs-2 col-form-label">Até:</label>
+										<div class="col-xs-10">
+											<input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+										</div>
+									</div>	
+								</div>	
+
+							</div> 
+
+							<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+							<button type="submit" class="btn btn-primary">Confirma</button>
+							</div>
+						</form>	
+					</div> 
+				</div> 
+			<!-- 1.1.1 FIM Comparativo de Dias -->
+
+			</div> <!-- FECHA row -->
+		</div> <!-- FECHA container-fluid -->
+	</div> <!-- FECHA modal-body -->
+
+</div> <!-- FECHA modal-content -->
+</div> <!-- FECHA modal-dialog modal-lg -->
+</div> <!-- FECHA modal fade bs-comparativos-modal-lg -->
+
+<!-- 1.1 FIM MODAL COMPARATIVO DIAS FIM -->	
+<!-- 1.2 INÍCIO MODAL COMPARATIVO MESES -->
+
+<div class="modal fade bs-comparativosmeses-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="exampleModalLabel">Comparativos</h4>
+	</div>
+
+	<div class="modal-body">
+		<div class="container-fluid">
+  			<div class="row">
+  			<!-- 1.1.1 INÍCIO Comparativo de Meses -->
+  				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="panel panel-primary">
+						
+						<div class="panel-heading">
+							<h3 class="panel-title">Comparar Meses</h3>
+						</div>
+						<form>
+							<div class="panel-body">
+								<div class="row col-xs-12 col-sm-12 col-md-6 col-lg-6">	
+
+									<div class="form-check">
+		  								<label class="form-check-label">
+		    							<input class="form-check-input" type="checkbox" value="">
+		    							Loja 1 - São Bernardo do Campo
+		  								</label>
+									</div>
+		    						
+		    						<div class="form-check">
+		  								<label class="form-check-label">
+		    							<input class="form-check-input" type="checkbox" value="">
+		    							Loja 2 - São Caetano do Sul
+		  								</label>
+									</div>
+									<br>
+								</div>	
+
+								<div class="row col-xs-12 col-sm-12 col-md-6 col-lg-6">	
+								
+									<div class="form-group row">
+										<label for="example-date-input" class="col-xs-2 col-form-label">De:</label>
+										<div class="col-xs-10">
+											<input class="form-control" type="month" value="2011-08" id="example-date-input">
+										</div>
+									</div>
+									
+									<div class="form-group row">
+										<label for="example-date-input" class="col-xs-2 col-form-label">Até:</label>
+										<div class="col-xs-10">
+											<input class="form-control" type="month" value="2011-08" id="example-date-input">
+										</div>
+									</div>	
+								</div>	
+
+							</div> 
+
+							<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+							<button type="submit" class="btn btn-primary">Confirma</button>
+							</div>
+						</form>	
+					</div> 
+				</div> 
+			<!-- 1.1.1 FIM Comparativo de Meses -->
+
+			</div> <!-- FECHA row -->
+		</div> <!-- FECHA container-fluid -->
+	</div> <!-- FECHA modal-body -->
+
+</div> <!-- FECHA modal-content -->
+</div> <!-- FECHA modal-dialog modal-lg -->
+</div> <!-- FECHA modal fade bs-comparativos-modal-lg -->
+
+
+<!-- 1.2 FIM MODAL COMPARATIVO MESES -->	
+<!-- 1.3 INÍCIO MODAL COMPARATIVO HOJE -->
+
+<div class="modal fade bs-comparativoshoje-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal-dialog modal-sm" role="document">
+<div class="modal-content">
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="exampleModalLabel">Comparativos</h4>
+	</div>
+
+	<div class="modal-body">
+		<div class="container-fluid">
+  			<div class="row">
+  			<!-- 1.1.1 INÍCIO Comparativo de Meses -->
+  				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="panel panel-primary">
+						
+						<div class="panel-heading">
+							<h3 class="panel-title">Comparar Meses</h3>
+						</div>
+						<form>
+							<div class="panel-body">
+								<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">	
+
+									<div class="form-check">
+		  								<label class="form-check-label">
+		    							<input class="form-check-input" type="checkbox" value="">
+		    							Loja São Bernardo do Campo
+		  								</label>
+									</div>
+		    						
+		    						<div class="form-check">
+		  								<label class="form-check-label">
+		    							<input class="form-check-input" type="checkbox" value="">
+		    							Loja São Caetano do Sul
+		  								</label>
+									</div>
+									<br>
+								</div>	
+							
+							</div> 
+
+							<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+							<button type="submit" class="btn btn-primary">Confirma</button>
+							</div>
+						</form>	
+					</div> 
+				</div> 
+			<!-- 1.1.1 FIM Comparativo de Meses -->
+
+			</div> <!-- FECHA row -->
+		</div> <!-- FECHA container-fluid -->
+	</div> <!-- FECHA modal-body -->
+
+</div> <!-- FECHA modal-content -->
+</div> <!-- FECHA modal-dialog modal-lg -->
+</div> <!-- FECHA modal fade bs-comparativos-modal-lg -->
+
+
+<!-- 1.3 FIM MODAL COMPARATIVO HOJE -->	
+<!-- 1.4 MODAL LOJA INÍCIO -->	
+<div class="modal fade bs-loja-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal-dialog modal-sm" role="document">
+<div class="modal-content">
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="exampleModalLabel">Consolidar Lojas</h4>
+	</div>
+
+	<div class="modal-body">
+		<div class="container-fluid">
+  			<div class="row">
+  				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="panel panel-primary">
+						
+						<div class="panel-heading">
+							<h3 class="panel-title">Consolidar Lojas</h3>
+						</div>
+
+						<div class="panel-body">
+							
+							<form>
+								<div class="form-check">
+	  								<label class="form-check-label">
+	    							<input class="form-check-input" type="checkbox" value="">
+	    							Loja 1
+	  								</label>
+								</div>
+	    						
+	    						<div class="form-check">
+	  								<label class="form-check-label">
+	    							<input class="form-check-input" type="checkbox" value="">
+	    							Loja 2
+	  								</label>
+								</div>
+					
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+									<button type="submit" class="btn btn-primary">Confirma</button>
+								</div>
+							</form>	
+							
+						</div>
+					
+					</div>	
+				</div>	
+			</div>
+		</div>			
+	</div>	
+
+</div>
+</div>
+</div>	
+
+<!-- 1.4 MODAL LOJA FIM -->	
+
+<!-- MODAL JORNADA INÍCIO -->
+
+<div class="modal fade bs-jornada-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal-dialog modal-sm" role="document">
+<div class="modal-content">
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="exampleModalLabel">Jornada da Loja</h4>
+	</div>
+
+	<div class="modal-body">
+		<div class="container-fluid">
+  			<div class="row">
+  				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="panel panel-primary">
+						
+						<div class="panel-heading">
+							<h3 class="panel-title">Jornada de trabalho</h3>
+						</div>
+
+						<div class="panel-body">
+							
+							<form>
+								<div class="form-group row">
+							  <label for="example-time-input" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-form-label">Início:</label>
+							  <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+							    <input class="form-control" type="time" value="13:45:00" id="example-time-input">
+							  </div>
+							</div>
+
+							<div class="form-group row">
+							  <label for="example-time-input" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-form-label">Fim:</label>
+							  <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+							    <input class="form-control" type="time" value="13:45:00" id="example-time-input">
+							  </div>
+							</div>
+									
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+									<button type="submit" class="btn btn-primary">Confirma</button>
+								</div>
+							</form>	
+							
+						</div>
+					
+					</div>	
+				</div>	
+			</div>
+		</div>			
+	</div>	
+
+</div>
+</div>
+</div>	
+
+
+<!-- MODAL JORNADA FIM -->
+
+
+</header>
+
+<!-- 1.0 CABEÇALHO E MENU - FIM -->
+
+<section>
+	
+	<article>
+  		<div class="container-fluid">
+  			<div class="row conteudo">
+
+<!-- INÍCIO BLOCO de Conteúdo da página de cadastros -->
+
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title">Cadastros</h3>
+						</div>
+
+						<div class="panel-body">
+
+<!-- Bloco de configuração de Abas -->
+						
+						<ul class="nav nav-tabs">
+						  <li class="active"><a data-toggle="tab" href="#usuarios">Usuários</a></li>
+						  <li><a data-toggle="tab" href="#grupos">Grupos</a></li>
+						  <li><a data-toggle="tab" href="#lojas">Lojas</a></li>
+						  <li><a data-toggle="tab" href="#usuariosxlojas">Usuários X Lojas</a></li>
+						</ul>
+
+						<div class="tab-content">
+
+<!-- Bloco de configuração de Abas -->
+<!-- Aba Cadastro de Usuários -->
+
+							<div id="usuarios" class="tab-pane fade in active">
+
+								<div id="top" class="row">
+	   
+								    <div class="col-xs-7 col-sm-6 col-md-6 col-lg-6">
+								        <h3>Cadastro de Usuários</h3>
+
+								    </div>
+
+									<div class="col-xs-5 col-sm-6 col-md-6 col-lg-6">
+															        
+									    <a href="javascript:void(0);" class="btn btn-primary pull-right h2" data-toggle="modal" data-target=".bs-usuario-modal-lg">Novo Usuário</a>
+															    
+									</div>
+								</div> <!-- /#top -->
+								<hr />
+<!-- LISTA DADOS JÁ INCLUSOS NO BANCO -->
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID do Usuário</th>
+        <th>Nome do Usuário</th>
+        <th>E-mail do Usuário</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>000001</td>
+        <td>João</td>
+        <td>joao@padariabrasileira.com.br</td>
+      </tr>
+      <tr>
+        <td>000002</td>
+        <td>Mariana</td>
+        <td>mariana@belavitoria.com.br</td>
+      </tr>
+    </tbody>
+  </table>
+<!-- LISTA DADOS JÁ INCLUSOS NO BANCO -->
+							</div>
+<!-- MODAL PARA CADASTRO DE NOVO USUÁRIO -->
+
+<div class="modal fade bs-usuario-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="exampleModalLabel">Cadastro de Novo Usuário</h4>
+	</div>
+
+	<div class="modal-body">
+		<div class="container-fluid">
+  			<div class="row">
+  				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="panel panel-primary">
+						
+						<div class="panel-heading">
+							<h3 class="panel-title">Novo Usuário</h3>
+						</div>
+
+						<div class="panel-body">
+							
+							<form class="form-horizontal">		  
+
+								  <div class="form-group">
+								    <label class="control-label col-sm-3" for="id_usuario">ID:</label>
+								    <div class="col-sm-9">
+								      <input type="email" class="form-control" id="id_usuario" placeholder="ID Usuário" disabled="">
+								    </div>
+								  </div>
+
+								  <div class="form-group">
+								    <label class="control-label col-sm-3" for="nome_usuario">Nome:</label>
+								    <div class="col-sm-9"> 
+								      <input type="text" class="form-control" id="nome_usuario" placeholder="Nome do Usuário">
+								    </div>
+								  </div>
+
+								  <div class="form-group">
+								    <label class="control-label col-sm-3" for="email_usuario">E-mail:</label>
+								    <div class="col-sm-9"> 
+								      <input type="email" class="form-control" id="email_usuario" placeholder="Nome do Usuário">
+								    </div>
+								  </div>
+
+								  <div class="form-group">
+								    <label class="control-label col-sm-3" for="senha_usuario">Senha:</label>
+								    <div class="col-sm-9"> 
+								      <input type="password" class="form-control" id="senha_usuario" placeholder="Nome do Usuário">
+								    </div>
+								  </div>								  
+
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+									<button type="submit" class="btn btn-success">Salvar</button>
+								</div>
+
+							</form>	
+							
+						</div>
+					
+					</div>	
+				</div>	
+			</div>
+		</div>			
+	</div>	
+
+</div>
+</div>
+</div>	
+<!-- MODAL PARA CADASTRO DE NOVO USUÁRIO --> 								
+
+
+<!-- Aba Cadastro de Grupos -->						  
+						  
+<div id="grupos" class="tab-pane fade">
+							
+	<div id="top" class="row">
+	   
+	    <div class="col-xs-7 col-sm-6 col-md-6 col-lg-6">
+	        <h3>Cadastro de Grupos</h3>
+
+	    </div>
+
+		<div class="col-xs-5 col-sm-6 col-md-6 col-lg-6">
+								        
+		    <a href="javascript:void(0);" class="btn btn-primary pull-right h2" data-toggle="modal" data-target=".bs-grupo-modal-lg">Novo Grupo</a>
+								    
+		</div>
+	</div> <!-- /#top -->
+	<hr />
+
+<!-- LISTA DADOS JÁ INCLUSOS NO BANCO -->
+<table class="table table-hover" id="tab_grupos">
+    <thead>
+      <tr>
+        <th>ID do Grupo</th>
+        <th>Nome do Grupo</th>
+        <th>Proprietário</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>000001</td>
+        <td>Padarias Brasileira</td>
+        <td>João</td>
+      </tr>
+      <tr>
+        <td>000002</td>
+        <td>Padarias Vitória</td>
+        <td>Mariana</td>
+      </tr>
+    </tbody>
+  </table>
+<!-- LISTA DADOS JÁ INCLUSOS NO BANCO -->
+
+</div>
+
+
+<!-- MODAL PARA CADASTRO DE NOVO GRUPO -->
+
+<div class="modal fade bs-grupo-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="exampleModalLabel">Cadastro de Novo Grupo</h4>
+	</div>
+
+	<div class="modal-body">
+		<div class="container-fluid">
+  			<div class="row">
+  				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="panel panel-primary">
+						
+						<div class="panel-heading">
+							<h3 class="panel-title">Novo Grupo</h3>
+						</div>
+
+						<div class="panel-body">
+							
+							<form class="form-horizontal">
+
+
+								<div class="form-group">
+								    <label class="control-label col-sm-3" for="id_grupo">ID:</label>
+								    <div class="col-sm-9">
+								      <input type="email" class="form-control" id="id_grupo" placeholder="ID Grupo" disabled="">
+								    </div>
+								  </div>
+
+								  <div class="form-group">
+								    <label class="control-label col-sm-3" for="nome_grupo">Nome:</label>
+								    <div class="col-sm-9"> 
+								      <input type="text" class="form-control" id="nome_grupo" placeholder="Nome do Grupo">
+								    </div>
+								  </div>
+
+								  <div class="form-group">
+								    <label class="control-label col-sm-3" for="id_usuario">Proprietário:</label>
+								    <div class="col-sm-9"> 
+							        	<select class="form-control" id="id_usuario">
+										    <option>João</option>
+										    <option>Mariana</option>
+										</select>
+								    </div>
+								  </div>	
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+									<button type="submit" class="btn btn-success">Salvar</button>
+								</div>
+
+							</form>	
+							
+						</div>
+					
+					</div>	
+				</div>	
+			</div>
+		</div>			
+	</div>	
+
+</div>
+</div>
+</div>	
+<!-- MODAL PARA CADASTRO DE NOVO GRUPO --> 							
+
+<!-- Aba Cadastro de Grupos -->
+
+<!-- Aba Cadastro de Lojas -->
+
+							<div id="lojas" class="tab-pane fade">
+
+						    	<div id="top" class="row">
+	   
+								    <div class="col-xs-7 col-sm-6 col-md-6 col-lg-6">
+								        <h3>Cadastro de Lojas</h3>
+
+								    </div>
+
+									<div class="col-xs-5 col-sm-6 col-md-6 col-lg-6">
+															        
+									    <a href="javascript:void(0);" class="btn btn-primary pull-right h2" data-toggle="modal" data-target=".bs-loja-modal-lg">Nova Loja</a>
+															    
+									</div>
+								</div> <!-- /#top -->
+								<hr />
+
+<!-- LISTA DADOS JÁ INCLUSOS NO BANCO -->
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID do Grupo</th>
+        <th>Nome do Grupo</th>
+        <th>ID da Loja</th>
+        <th>Nome da Loja</th>
+        <th>Proprietário</th>
+      </tr>
+    </thead>
+    <tbody>
+
+	<tr>
+        <td>000001</td>
+        <td>Grupo Brasileira</td>
+        <td>000001</td>
+        <td>Padarias Brasileira Central</td>
+        <td>João</td>        
+    </tr>
+    <tr>
+        <td>000002</td>
+    	<td>Grupo Vitória</td>
+        <td>000002</td>
+        <td>Bela Brasileira</td>    
+        <td>Mariana</td>	
+    </tr>
+    
+	</tbody>
+  
+</table>
+<!-- LISTA DADOS JÁ INCLUSOS NO BANCO -->
+							</div>
+<!-- MODAL PARA CADASTRO DE NOVA LOJA -->
+
+<div class="modal fade bs-loja-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="exampleModalLabel">Cadastro de Nova Loja</h4>
+	</div>
+
+	<div class="modal-body">
+		<div class="container-fluid">
+  			<div class="row">
+  				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="panel panel-primary">
+						
+						<div class="panel-heading">
+							<h3 class="panel-title">Nova Loja</h3>
+						</div>
+
+						<div class="panel-body">
+							
+							<form class="form-horizontal">
+
+
+								<div class="form-group">
+								    <label class="control-label col-sm-3" for="nome_grupo">Grupo:</label>
+								    <div class="col-sm-9">
+								      
+								          <select class="form-control" id="nome_grupo">
+										      <option>Grupo Brasileira</option>
+										      <option>Grupo Vitória</option>
+										    </select>
+								    </div>
+
+								  </div>						  
+
+								  <div class="form-group">
+								    <label class="control-label col-sm-3" for="id_usuario">Proprietário:</label>
+								    <div class="col-sm-9"> 
+							        	<select class="form-control" id="id_usuario">
+										    <option>João</option>
+										    <option>Mariana</option>
+										</select>
+								    </div>
+								  </div>
+
+								  <div class="form-group">
+								    <label class="control-label col-sm-3" for="id_loja">ID:</label>
+								    <div class="col-sm-9">
+								      <input type="email" class="form-control" id="id_loja" placeholder="ID Loja" disabled="">
+								    </div>
+								  </div>
+
+								  <div class="form-group">
+								    <label class="control-label col-sm-3" for="nome_loja">Nome:</label>
+								    <div class="col-sm-9"> 
+								      <input type="password" class="form-control" id="nome_loja" placeholder="Nome da Loja">
+								    </div>
+								  </div>
+ 
+ 								  <div class="form-group">
+								    <label class="control-label col-sm-3" for="cnpj_loja">CNPJ:</label>
+								    <div class="col-sm-9"> 
+								      <input type="text" class="form-control" id="cnpj_loja" placeholder="000.000.000/0000-00" maxlength="14" autocomplete="off">
+								    </div>
+								  </div>
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+									<button type="submit" class="btn btn-success">Salvar</button>
+								</div>
+
+							</form>	
+							
+						</div>
+					
+					</div>	
+				</div>	
+			</div>
+		</div>			
+	</div>	
+
+</div>
+</div>
+</div>	
+<!-- MODAL PARA CADASTRO DE NOVA LOJA --> 				
+
+<!-- Aba Cadastro de Lojas -->
+
+
+<!-- Aba Cadastro de Usuários -->
+
+
+<!-- Aba Cadastro de Usuários X Lojas-->
+
+							<div id="usuariosxlojas" class="tab-pane fade">
+
+						    	<div id="top" class="row">
+	   
+								    <div class="col-xs-7 col-sm-6 col-md-6 col-lg-6">
+								        <h3>Cadastro de Usuários X Lojas</h3>
+
+								    </div>
+
+									<div class="col-xs-5 col-sm-6 col-md-6 col-lg-6">
+															        
+									    <a href="javascript:void(0);" class="btn btn-primary pull-right h2" data-toggle="modal" data-target=".bs-usrxloja-modal-lg">Novo Usuário X Loja</a>
+															    
+									</div>
+								</div> <!-- /#top -->
+								<hr />
+
+<!-- LISTA DADOS JÁ INCLUSOS NO BANCO -->
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID do Usuário</th>
+        <th>Nome do Usuário</th>
+        <th>ID da Loja</th>
+        <th>Nome da Loja</th>
+      </tr>
+    </thead>
+    <tbody>
+
+	<tr>
+        <td>000001</td>
+        <td>João</td>
+        <td>000001</td>
+        <td>João</td>
+    </tr>
+    <tr>
+        <td>000002</td>
+    	<td>Mariana</td>
+        <td>000002</td>
+        <td>Bela Brasileira</td>    
+    </tr>
+    
+	</tbody>
+  
+</table>
+<!-- LISTA DADOS JÁ INCLUSOS NO BANCO -->
+							</div>
+<!-- Aba Cadastro de Usuários X Lojas -->
+<!-- MODAL PARA CADASTRO DE NOVA LOJA -->
+
+<div class="modal fade bs-usrxloja-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="exampleModalLabel">Cadastro de Usuário X Loja</h4>
+	</div>
+
+	<div class="modal-body">
+		<div class="container-fluid">
+  			<div class="row">
+  				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="panel panel-primary">
+						
+						<div class="panel-heading">
+							<h3 class="panel-title">Nova Usuário X Loja</h3>
+						</div>
+
+						<div class="panel-body">
+							
+							<form class="form-horizontal">
+
+
+								<div class="form-group">
+								    <label class="control-label col-sm-3" for="nome_grupo">Loja:</label>
+								    <div class="col-sm-9">
+								      
+								          <select class="form-control" id="id_loja">
+										      <option>Padarias Brasileira Central</option>
+										      <option>Bela Brasileira</option>
+										    </select>
+								    </div>
+
+								  </div>						  
+
+								  <div class="form-group">
+								    <label class="control-label col-sm-3" for="id_usuario">Usuário:</label>
+								    <div class="col-sm-9"> 
+							        	<select class="form-control" id="id_usuario">
+										    <option>João</option>
+										    <option>Mariana</option>
+										</select>
+								    </div>
+								  </div>
+
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+									<button type="submit" class="btn btn-success">Salvar</button>
+								</div>
+
+							</form>	
+							
+						</div>
+					
+					</div>	
+				</div>	
+			</div>
+		</div>			
+	</div>	
+
+</div>
+</div>
+</div>	
+<!-- MODAL PARA CADASTRO DE NOVA LOJA --> 
+
+						</div>
+							
+						</div>
+
+					</div>
+				</div>
+<!-- INÍCIO BLOCO de Conteúdo da página de cadastros -->
+
+<!-- FIM BLOCO 5 - TOP 5 Produtos -->
+			</div>
+		</div>	
+	</article>	
+
+
+</section>
+
+
+<footer>
+	
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+  		<div class="container"> 		
+		   	<h6 class="text-center text-capitalize rodape">NOME DO GRUPO - 1.00 | 1200 | 150</h6>
+	    </div>
+	</nav>	
+
+</footer>
+
+</body>
+</html>

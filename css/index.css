@@ -1,0 +1,312 @@
+body{
+	min-height: 100vh; 
+	background-color: #f5f5f5;
+  /*background-image: linear-gradient(to bottom, white, white);*/
+  padding-bottom: 10px;
+  font-family: "leelawadee", sans-serif;	
+}
+
+@media (max-width: 1200px){
+
+  .naomostrar{
+    display: none;
+  }
+}
+
+.formatacao{
+  background-color: #DCDCDC;
+  border-color: #4682B4;
+  /*box-shadow: 10px 10px 5px #888888;*/
+}
+
+.sombra{
+  box-shadow: 6px 6px 3px #DCDCDC;
+}
+
+.sombramenor{
+  box-shadow: 2px 2px 1px 1px #DCDCDC;
+}
+
+
+.sombramenor_rodape{
+  box-shadow: 2px -2px 1px 1px #DCDCDC;
+}
+
+.formatacao h1{
+  color: #2F4F4F;
+}
+
+.logotipo {
+	padding: 10px;
+	margin-right: 40px;
+}
+
+.logotipo img {	
+	height: 30px;
+}
+
+.lista li{
+	padding-right: 16px;
+}
+
+.conteudo{
+	margin-top: 60px;
+	margin-bottom: 30px;
+}
+
+.rodape{
+	/*padding: 5px;*/
+}
+@media (min-width: 900px){
+  
+  .formatacao h1{
+    font-size: 3.2em;
+  }
+  
+  .formatacao h4{
+    font-size: 2em;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .rodape{
+    font-size: 0.8em;
+  } 
+
+  .formatacao h1{
+    font-size: 2.0em;
+  } 
+}
+
+h3{
+  font-size: 1.3em;
+  /*font-weight: bold;*/
+  letter-spacing:1.5px;
+}
+
+
+.box-alert{
+  width: 100%;
+  height: 100%;
+}
+
+/*Customização da NAVBAR (Menu e Logo)*/
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+color: white;  /*Sets the text hover color on navbar*/
+/*background-color: #337ab7;*/
+background-color: #09a4c4;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >   
+ a:hover, .navbar-default .navbar-nav > .active > a:focus {
+color: black; /*BACKGROUND color for active*/
+background-color: yellow;
+}
+
+  .navbar-default {
+    background-color: #f5f5f5;
+    border-color: #09a4c4;
+    font-size: 1.1em;
+    border-color: #09a4c4;
+
+
+}
+
+.dropdown-menu{
+    background-color: #f5f5f5;
+    /*border-color: #030033;*/
+    font-size: 1.1em;
+    /*border-color: #337ab7;*/
+
+  }
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  color: white;  /*Sets the text hover color on navbar*/
+  /*background-color: #337ab7;*/
+  background-color: #09a4c4;  
+}
+
+ .nav > li > a:hover,
+ .nav > li > a:focus {
+  color: white;  /*Sets the text hover color on navbar*/
+  background-color: #337ab7;
+  
+}
+
+
+.navbar-default .navbar-nav > li > a {
+   color: black; /*Change active text color here*/
+}
+/*Customização da NAVBAR (Menu e Logo)*/
+
+
+/*Customização do Menu da NAVBAR para ativar o Hover do Mouse */
+@media (min-width: 768px) {
+  .dropdown:hover .dropdown-menu {
+  display: block;
+  border: none;
+  }
+}
+
+.panel--title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 16px;
+  color: inherit;
+  display: inline;
+  width: 80%;
+
+}
+
+.panel--title-filtro{
+  font-size: 20px;
+  display: inline;
+  float: right;
+}
+
+.panel-primary > .panel-heading {
+  background-color: #09a4c4;
+}
+
+.datamaxi-logo img{
+  height: 30px;
+}
+
+.datamaxi-logo{
+  padding: 10px;
+}
+
+@media (max-width: 768px){
+  .datamaxi-logo{
+    display:none;
+  }
+
+  .datamaxi-logo-mobile img{
+    height: 30px;
+  }
+
+  .datamaxi-logo-mobile{
+    padding: 10px;
+    float: right;
+    position: relative;
+  }
+
+  .dispMovel{
+    font-size: 0.6em;
+  }
+}
+
+@media (min-width: 768px){
+  .datamaxi-logo-mobile img{
+    display:none;
+  }
+
+}
+
+@media (max-width: 960px){
+  .datamaxi-logo{
+    display:none;
+  }
+
+  .lista li{
+  padding-right: 4px;
+}
+}
+
+.modal--dialog {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin:0 0 0 0;
+}
+
+.modal--content {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  margin: 0 0 0 0;
+}
+
+.efeito1:hover{
+    color: orange;  
+}
+
+.efeito1{
+    color: white;
+}
+
+.modal-header{
+  background-color: #09a4c4;
+}
+.modal-title{
+  color:white;
+}
+.btn-excluir{
+  color:red;
+  cursor: pointer;
+  background: none;
+  border: 0px;
+}
+.btn-excluir:hover{
+  color:red;
+  text-decoration:underline;
+}
+.panel-body, .modal-footer{
+  padding-bottom: 0px;
+}
+.tab-pane{
+  margin-top: 10px;
+}
+.disabled{
+  display: none;
+}
+.modal-dialog .row{
+  margin-bottom: 15px;
+}
+.btn-xs{
+  width: 65px;
+  padding: 2px 5px;
+}
+
+.section {
+  padding: 10px;
+  border: 1px solid #e5e5e5;
+}
+.title-section{
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+  text-align: left;
+}
+.modal-body .panel-body{
+  padding-top: 10px;
+}
+table th{
+    padding: 8px!important;
+    font-size: 14px!important;
+    font-weight: 500!important;
+}
+.ficha_item table th{
+    padding: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.navbar-fixed-top{
+  /*height: 125px;*/
+}
+.conteudopopup .container-fluid{
+  margin-top:32px;
+}
+.perfil #navbarDropdownMenuLink img{
+/*  margin-top: -56px;
+  height: 100px;
+  margin-left: 60px;
+    position: absolute;
+    z-index: 1001;*/
+   
+}
+.perfil #navbarDropdownMenuLink{
+/*  padding-right: 130px;*/
+}
