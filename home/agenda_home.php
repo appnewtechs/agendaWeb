@@ -1,6 +1,5 @@
 <?php
 	require(dirname(__FILE__).'/../eventos/bdd.php');
-	require(dirname(__FILE__).'/../funcoes.php');
 	// $sql = "select events.*, usuario.nome as nome_usuario, usuario.cor as cor_usuario, cliente.id_tipo_cliente as id_tipo_cliente FROM `events` INNER JOIN `usuario` ON events.id_usuario = usuario.id_usuario LEFT JOIN `cliente` ON usuario.id_usuario = cliente.id_usuario";
 	$usuarioLogado = buscaUsuario($conexao,$_SESSION["login"]);
 	$isAdmin = verificaAdmin($_SESSION["rotina"]);

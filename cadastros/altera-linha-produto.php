@@ -1,5 +1,5 @@
-<?php 
-    require_once("../banco-cadastros.php");
+<?php
+    require_once "../bootstrap.php";
 
     $id_linha_produto = $_POST["id_linha_produto"];
     $descricao = $_POST["descricao"];
@@ -14,6 +14,4 @@
         $_SESSION["danger"] = "Linha de produto não atualizada. Verifique se o código já existe para outro Linha de produto!";
         header("Location: linha-produto.php");
         die();
-    }   
-
-?>
+    }

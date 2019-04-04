@@ -1,5 +1,5 @@
-<?php 
-    require_once("../banco-cadastros.php");
+<?php
+    require_once "../bootstrap.php";
 
     $id_tipo_empresa = $_POST["id_tipo_empresa"];
     $codigo = $_POST["codigo"];
@@ -17,6 +17,4 @@
         $_SESSION["danger"] = "Tipo de empresa não atualizado. Verifique o código!";
         header("Location: tipo-empresa.php");
         die();
-    }   
-
-?>
+    }

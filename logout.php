@@ -1,4 +1,4 @@
-<?php require_once("logica-usuario.php"); 
+<?php require_once "bootstrap.php"; 
 
 if(isset($_SESSION["login"])){
 	logout();

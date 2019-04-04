@@ -1,5 +1,5 @@
 <?php 
-	require_once("../banco-home.php");
+	require_once("../bootstrap.php");
 	$id_lembrete = $_POST["id_lembrete"];
 	session_start();
 	if(removeLembrete($conexao, $id_lembrete)){
@@ -10,7 +10,6 @@
 		$_SESSION["danger"] = "Lembrete não removido. Verifique os dados!";
 		header("Location: ../home.php");
 		die();
-	};	
-	
+	}	
 ?>
 

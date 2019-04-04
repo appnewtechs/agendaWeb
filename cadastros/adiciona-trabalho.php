@@ -1,5 +1,5 @@
-<?php 
-	require_once("../banco-cadastros.php");
+<?php
+	require_once "../bootstrap.php";
 
     $codigo = $_POST["codigo"];
 	$descricao = $_POST["descricao"];
@@ -14,6 +14,4 @@
 		$_SESSION["danger"] = "Trabalho não cadastrado. Verifique os dados!";
 		header("Location: trabalho.php");
 		die();
-	}	
-
-?>
+	}

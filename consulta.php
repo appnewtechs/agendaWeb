@@ -1,10 +1,5 @@
 <?php 
-
-// include('../conecta.php');
-define('SERVER', 'localhost');
-define('DBNAME', 'newtech');
-define('USER', 'root');
-define('PASSWORD', 'newtech');
+require_once ('../bootstrap.php');
 // Recebe os parâmetros enviados via GET
 $acao = (isset($_GET['acao'])) ? $_GET['acao'] : '';
 $parametro = (isset($_GET['parametro'])) ? $_GET['parametro'] : '';
@@ -14,7 +9,7 @@ $like = explode(",", $like);
 $where = "WHERE ";
 // Configura uma conexão com o banco de dados
 $opcoes = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8');
-$conexao = new PDO("mysql:host=".SERVER."; dbname=".DBNAME, USER, PASSWORD, $opcoes);
+$conexao = new PDO("mysql:host=".DB_SERVER."; dbname=".DB_NAME, DB_USER, DB_PASSWORD, $opcoes);
 
 
 if(!empty($parametro)){
@@ -75,7 +70,7 @@ if($acao == 'consulta'):
 		// }
 		$stm->execute();
 		$dados = $stm->fetchAll(PDO::FETCH_OBJ);
-		$conexao = mysqli_connect("localhost","root","","newtech");
+		$conexao = mysqli_connect("newtech-mysql","root","","newtech");
 		$query_perfil = "select usuario_perfil.id_usuario,usuario_perfil.id_perfil,perfil.nome FROM `usuario_perfil` INNER JOIN `perfil` ON usuario_perfil.id_perfil = perfil.id_perfil WHERE usuario_perfil.id_usuario = ".$dados[0]->id_usuario;
 		$dados[0]->nome_perfil = "";
 		$resultado_perfil = mysqli_query($conexao, $query_perfil);

@@ -1,7 +1,11 @@
-<?php require_once("../cabecalho.php") ?>
-<?php require_once("../funcoes.php") ?>
+<?php 
+require_once "../bootstrap.php";
+require "../cabecalho.php";
+?>
+<div id="Agenda"></div>
+<script src="http://localhost:8081/app.js"></script>
 <?php
-	require_once('bdd.php');
+	$pdo = new PDO('mysql:host='.DB_SERVER.';dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASSWORD);
 	// $sql = "SELECT id, title, start, end, color, id_usuario, descricao FROM events ";
 	function searchForId2($id, $array) {
 	   foreach ($array as $key => $val) {
@@ -36,7 +40,7 @@
 	if(!empty($isCliente)){
 		$sql = "select events.*, usuario.nome as nome_usuario, trabalho.cor as cor_trabalho, cliente.id_tipo_cliente as id_tipo_cliente FROM `events` INNER JOIN `usuario` ON events.id_usuario = usuario.id_usuario LEFT JOIN `cliente` ON usuario.id_usuario = cliente.id_usuario left join `trabalho` on events.tipo_trabalho = trabalho.id_trabalho ".$where;
 	}
-	$req = $bdd->prepare($sql);
+	$req = $pdo->prepare($sql);
 	$req->execute();
 	$events = $req->fetchAll();
 	
@@ -756,7 +760,7 @@ $(document).ready(function() {
 	});
 
 
-
+ 
 
 	$(document).on('click', '.gerarRelatorio', function(){
 

@@ -1,10 +1,5 @@
 <?php 
-
-// include('../conecta.php');
-define('SERVER', 'localhost');
-define('DBNAME', 'newtech');
-define('USER', 'root');
-define('PASSWORD', 'newtech');
+require_once "../bootstrap.php";
 // Recebe os parâmetros enviados via GET
 $acao = (isset($_GET['acao'])) ? $_GET['acao'] : '';
 $parametro = (isset($_GET['parametro'])) ? $_GET['parametro'] : '';

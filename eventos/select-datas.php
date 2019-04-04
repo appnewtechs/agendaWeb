@@ -1,4 +1,5 @@
-<?php  include("../banco-financeiro.php");
+<?php  
+require_once "../bootstrap.php";
 
 function data_eua_brasil($data)
 {

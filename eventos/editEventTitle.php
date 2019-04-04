@@ -1,10 +1,11 @@
 <?php
-
-require_once('bdd.php');
-require_once("../logica-usuario.php"); 
-include("../banco-usuario.php"); 
-include("../banco-financeiro.php");
-include("../funcoes.php");
+require_once "../bootstrap.php";
+$pdo = new PDO('mysql:host='.DB_SERVER.';dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASSWORD);
+// require_once('bdd.php');
+// require_once("../logica-usuario.php"); 
+// include("../banco-usuario.php"); 
+// include("../banco-financeiro.php");
+// include("../funcoes.php");
 // var_dump($_POST['id_empresa_ficha']);
 
 $edit_selected_usuario = @$_POST['edit_selected_usuario'];
@@ -54,9 +55,9 @@ if (isset($_POST['delete']) && isset($_POST['id'])){
 	$id = $_POST['id'];
 	$id_evento = $_POST['id_evento'];
 	$sql = "DELETE FROM events WHERE id_evento = $id_evento";
-	$query = $bdd->prepare( $sql );
+	$query = $pdo->prepare( $sql );
 	if ($query == false) {
-	 print_r($bdd->errorInfo());
+	 print_r($pdo->errorInfo());
 	 die ('Erreur prepare');
 	}
 	$res = $query->execute();
@@ -184,9 +185,9 @@ if (isset($_POST['delete']) && isset($_POST['id'])){
 // 	$sql = "UPDATE events SET  title = '$title', descricao = '$descricao', start = '$start', end = '$end' WHERE id = $id ";
 // var_dump($sql);
 	
-// 	$query = $bdd->prepare( $sql );
+// 	$query = $pdo->prepare( $sql );
 // 	if ($query == false) {
-// 	 print_r($bdd->errorInfo());
+// 	 print_r($pdo->errorInfo());
 // 	 die ('Erreur prepare');
 // 	}
 // 	$sth = $query->execute();

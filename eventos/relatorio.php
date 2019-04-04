@@ -1,7 +1,11 @@
-<?php require_once("../cabecalho-relatorio.php") ?>
-<?php require_once("../banco-cadastros.php") ?>
-<?php require_once("../banco-usuario.php") ?>
-<?php require_once("../funcoes.php") ?>
+<?php
+require_once "../bootstrap.php";
+require "../cabecalho-relatorio.php";
+// require_once("../cabecalho-relatorio.php"); 
+// require_once("../banco-cadastros.php"); 
+// require_once("../banco-usuario.php"); 
+// require_once("../funcoes.php"); 
+?>
 
 <!-- <div class="col-xs-12 breadcrumb" style="margin-bottom: 0px;">
 	<span>AGENDA > RELATÓRIO</span>

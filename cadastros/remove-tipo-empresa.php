@@ -1,5 +1,5 @@
 <?php 
-	require_once("../banco-cadastros.php");
+	require_once "../bootstrap.php";
 	$id_tipo_empresa = $_POST["id_tipo_empresa"];
 	session_start();
 	if(removeTipoEmpresa($conexao, $id_tipo_empresa)){
@@ -10,7 +10,4 @@
 		$_SESSION["danger"] = "Tipo de empresa não removido. Existem empresa(s) com esse tipo!";
 		header("Location: tipo-empresa.php");
 		die();
-	};	
-	
-?>
-
+	};

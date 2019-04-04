@@ -1,5 +1,5 @@
 <?php 
-	require_once("../banco-cadastros.php");
+	require_once "../bootstrap.php";
 	$id_empresa = $_POST["id_empresa"];
 	session_start();
 	if(removeEmpresa($conexao, $id_empresa)){
@@ -10,7 +10,4 @@
 		$_SESSION["danger"] = "Empresa não removido. Verifique os dados!";
 		header("Location: empresa.php");
 		die();
-	};	
-	
-?>
-
+	};

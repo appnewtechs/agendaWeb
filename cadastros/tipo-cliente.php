@@ -1,6 +1,7 @@
-<?php require_once("../cabecalho.php") ?>
-<?php require_once("../banco-cadastros.php") ?>
-
+<?php 
+require_once "../bootstrap.php";
+require "../cabecalho.php";
+?>
 <div class="col-xs-12 breadcrumb">
 	<span>CADASTROS > TIPO DE CLIENTE</span>
 </div>	

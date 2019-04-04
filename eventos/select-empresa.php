@@ -1,4 +1,5 @@
-<?php  include("../banco-usuario.php");
+<?php  
+require_once "../bootstrap.php";
 
 $usuario = $_POST["usuario"];
 $empresa = "";

@@ -1,8 +1,5 @@
-<?php require_once("../banco-usuario.php") ?>
-<?php require_once("../banco-cadastros.php") ?>
-<?php require_once("../funcoes.php") ?>
-
-<?php
+<?php 
+require_once "../bootstrap.php";
 $acao = $_GET['acao'];
 $especialidade = '';
 if($acao == 2){

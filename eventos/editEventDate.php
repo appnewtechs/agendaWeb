@@ -1,8 +1,6 @@
 <?php
-
-// Connexion à la base de données
-require_once('bdd.php');
-
+require_once "../bootstrap.php";
+$pdo = new PDO('mysql:host='.DB_SERVER.';dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASSWORD);
 if (isset($_POST['Event'][0]) && isset($_POST['Event'][1]) && isset($_POST['Event'][2])){
 	
 	
@@ -13,9 +11,9 @@ if (isset($_POST['Event'][0]) && isset($_POST['Event'][1]) && isset($_POST['Even
 	$sql = "UPDATE events SET  start = '$start', end = '$end' WHERE id = $id ";
 
 	
-	$query = $bdd->prepare( $sql );
+	$query = $pdo->prepare( $sql );
 	if ($query == false) {
-	 print_r($bdd->errorInfo());
+	 print_r($pdo->errorInfo());
 	 die ('Erreur prepare');
 	}
 	$sth = $query->execute();

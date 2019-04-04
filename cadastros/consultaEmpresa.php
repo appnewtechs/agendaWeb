@@ -1,10 +1,10 @@
 <?php 
 
 // include('../conecta.php');
-define('SERVER', 'localhost');
-define('DBNAME', 'newtech');
+define('SERVER', 'newtech-mysql');
+define('DBNAME', 'db');
 define('USER', 'root');
-define('PASSWORD', 'newtech');
+define('PASSWORD', '');
 // Recebe os parâmetros enviados via GET
 $acao = (isset($_GET['acao'])) ? $_GET['acao'] : '';
 $parametro = (isset($_GET['parametro'])) ? $_GET['parametro'] : '';

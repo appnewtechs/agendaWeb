@@ -1,5 +1,5 @@
 <?php 
-	require_once("../banco-cadastros.php");
+	require_once "../bootstrap.php";
 	$id_cliente = $_POST["id_cliente"];
 	session_start();
 	if(removeCliente($conexao, $id_cliente)){
@@ -10,7 +10,4 @@
 		$_SESSION["danger"] = "Cliente não removido. Verifique os dados!";
 		header("Location: cliente.php");
 		die();
-	};	
-	
-?>
-
+	};
