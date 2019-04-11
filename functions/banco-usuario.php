@@ -39,10 +39,10 @@ function buscaUsuariosOrder($conexao,$order){
 
 
 function buscaUsuariosNome($conexao){
-	$query ="select * from usuario order by nome asc";
+	$query ="select id_usuario, nome from usuario order by nome asc";
 	$resultado = mysqli_query($conexao, $query);
 	$usuarios = array();
-	$escolhatext = utf8_decode("Escolha um usuário");
+	$escolhatext = "Escolha um usuário";
 	$escolha = array(
 	 "id_usuario"=> "",
 	 "nome"=> $escolhatext
@@ -55,11 +55,12 @@ function buscaUsuariosNome($conexao){
 	return $usuarios;
 }
 
+
 function buscaTiposTrabalho($conexao){
 	$query ="select * from trabalho order by descricao asc";
 	$resultado = mysqli_query($conexao, $query);
 	$tiposTrabalho = array();
-	$escolhatext = utf8_decode("Escolha um tipo de trabalho");
+	$escolhatext = "Escolha um tipo de trabalho";
 	$escolha = array(
 	 "id_trabalho"=> "",
 	 "descricao"=> $escolhatext

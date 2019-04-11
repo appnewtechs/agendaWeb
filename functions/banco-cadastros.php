@@ -103,7 +103,7 @@ function buscaClienteId($conexao, $id_cliente)
 }
 function buscaClientesNome($conexao)
 {
-	$query = "select * from cliente order by nome_fantasia asc";
+	$query = "select id_cliente, nome_fantasia from cliente order by nome_fantasia asc";
 	$resultado = mysqli_query($conexao, $query);
 	$clientes = array();
 
@@ -114,7 +114,6 @@ function buscaClientesNome($conexao)
 
 	array_push($clientes, $escolha);
 	while ($cliente = mysqli_fetch_assoc($resultado)) {
-		// var_dump($cliente);
 		array_push($clientes, $cliente);
 	}
 	return $clientes;
@@ -122,7 +121,7 @@ function buscaClientesNome($conexao)
 
 function buscaEmpresasNome($conexao)
 {
-	$query = "select * from empresa order by nome_fantasia asc";
+	$query = "select id_empresa, nome_fantasia from empresa order by nome_fantasia asc";
 	$resultado = mysqli_query($conexao, $query);
 	$empresas = array();
 
@@ -178,33 +177,53 @@ function verificaUsuarioCliente($conexao, $id_usuario)
 
 function buscaEmpresasFiltro($conexao)
 {
-	$query = "select * from empresa order by nome_fantasia asc";
+	$query = "select id_empresa, nome_fantasia from empresa order by nome_fantasia asc";
 	$resultado = mysqli_query($conexao, $query);
-	return $resultado;
+	$empresas = array();
+	while ($empresa = mysqli_fetch_assoc($resultado)) {
+		array_push($empresas, $empresa);
+	}
+	return $empresas;
 }
 function buscaTrabalhoFiltro($conexao)
 {
-	$query = "select * from trabalho order by descricao asc";
+	$query = "select id_trabalho, descricao, cor from trabalho order by descricao asc";
 	$resultado = mysqli_query($conexao, $query);
-	return $resultado;
+	$trabalhos = array();
+	while ($trabalho = mysqli_fetch_assoc($resultado)) {
+		array_push($trabalhos, $trabalho);
+	}
+	return $trabalhos;
 }
 function buscaLinhasProdutoFiltro($conexao)
 {
-	$query = "select * from linha_produto order by descricao asc";
+	$query = "select id_linha_produto, descricao from linha_produto order by descricao asc";
 	$resultado = mysqli_query($conexao, $query);
-	return $resultado;
+	$linhas = array();
+	while ($linha = mysqli_fetch_assoc($resultado)) {
+		array_push($linhas, $linha);
+	}
+	return $linhas;
 }
 function buscaClientesFiltro($conexao)
 {
-	$query = "select * from cliente order by nome_fantasia asc";
+	$query = "select id_cliente, nome_fantasia from cliente order by nome_fantasia asc";
 	$resultado = mysqli_query($conexao, $query);
-	return $resultado;
+	$clientes = array();
+	while ($cliente = mysqli_fetch_assoc($resultado)) {
+		array_push($clientes, $cliente);
+	}
+	return $clientes;
 }
 function buscaTiposEmpresa($conexao)
 {
 	$query = "select * from tipo_empresa";
 	$resultado = mysqli_query($conexao, $query);
-	return $resultado;
+	$tipos = array();
+	while ($tipo = mysqli_fetch_assoc($resultado)) {
+		array_push($tipos, $tipo);
+	}
+	return $tipos;
 }
 
 function buscaTrabalhos($conexao)

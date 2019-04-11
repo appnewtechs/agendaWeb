@@ -1,16 +1,7 @@
 <?php
 require_once "../bootstrap.php";
 require "../cabecalho-relatorio.php";
-// require_once("../cabecalho-relatorio.php"); 
-// require_once("../banco-cadastros.php"); 
-// require_once("../banco-usuario.php"); 
-// require_once("../funcoes.php"); 
-?>
 
-<!-- <div class="col-xs-12 breadcrumb" style="margin-bottom: 0px;">
-	<span>AGENDA > RELATÓRIO</span>
-</div>	 -->
-<?php
 if(isset($_SESSION["sucesso"])) {
   echo "<p class='alert-success'>".$_SESSION["sucesso"]."</p>";
   unset($_SESSION["sucesso"]);
@@ -27,11 +18,13 @@ function searchForId($id, $array) {
    }
    return null;
 }
-$selected_usuario = explode(",", $_POST['selected_usuario']);
-$selected_empresa = explode(",", $_POST['selected_empresa']);
-$selected_trabalho = explode(",", $_POST['selected_trabalho']);
-$selected_cliente = explode(",", $_POST['selected_cliente']);
-$selected_linha_produto = explode(",", $_POST['selected_linha_produto']);
+$filtro = json_decode($_POST['filtro']);
+
+$selected_usuario = $filtro->usuarios;
+$selected_empresa = $filtro->empresas;
+$selected_trabalho = $filtro->trabalhos;
+$selected_cliente = $filtro->clientes;
+$selected_linha_produto = $filtro->linhas;
 // var_dump(expression)
 // var_dump($selected_empresa);
 date_default_timezone_set('America/Sao_Paulo');
