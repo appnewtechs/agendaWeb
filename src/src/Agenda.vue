@@ -3,8 +3,18 @@
 		<!-- FILTROS -->
 		<div class="col-sm-2">
 			<div class="row filtros">
-				<div class="filtros__titulo">
+				<div class="filtros__titulo my-8">
 					<h3>Filtros</h3>
+				</div>
+				<!-- Pesquisar -->
+				<div class="row filtro-toggle">
+					<div class="row">
+						<span class="filtro-toggle__title">
+							Pesquisar por Título:
+							<i id="icon" class="fa fa-arrow-down open"></i>
+						</span>
+					</div>
+					<input :value="filtroTitulo" @input="handleFiltroTitulo" type="text" required="true" class="form-control" autocomplete="off" name="titulo" placeholder="Titulo..">
 				</div>
 				<!-- Usuário -->
 				<div class="row filtro-toggle">
@@ -80,7 +90,7 @@
 				<div class="row filtro-toggle">
 					<div class="row">
 						<span class="filtro-toggle__title">
-							Linhs de Produto
+							Linhas de Produto
 							<i id="icon" class="fa fa-arrow-down open"></i>
 						</span>
 					</div>
@@ -112,12 +122,14 @@
 				<a href="javascript:void(0);" class="btn btn-primary pull-left h2 btn-novo novoEvento" @click="handleNovoEvento"><i class="glyphicon glyphicon-plus"></i> Novo evento</a></div>
 			<FullCalendar ref="Calendar" :events="eventosFiltrados || eventos" :config="fullCalendarConfig" @view-render="viewRender" @event-selected="handleSelectEvent"/>
 		</div>
-		<Modal v-if="showModal" :evento="evento" @close="showModal = false"/>
+		<Modal v-if="showModal" :evento="evento" @close="showModal = false; evento={}" @save="loadEventos"/>
 	</div>
 </template>
 <script>
 import { FullCalendar } from "vue-full-calendar"
 import Modal from "./components/Modal.vue"
+import Feriados from "./util/mock-feriados"
+import debounce from "debounce"
 
 function getTrueKeysValues(obj) {
 	const list = []
@@ -144,6 +156,7 @@ export default {
 			filtroTrabalho: null,
 			filtroCliente: null,
 			filtroLinhaProduto: null,
+			filtroTitulo: null,
 			usuariosSelect: null,
 			empresasSelect: null,
 			clientesSelect: null,
@@ -157,7 +170,9 @@ export default {
 			selected_trabalhos: {},
 			selected_clientes: {},
 			selected_empresas: {},
-			selected_produtos: {}
+			selected_produtos: {},
+			start: null,
+			end: null
 		}
 	},
 	computed: {
@@ -203,6 +218,15 @@ export default {
 					return false
 				})
 			}
+			if (this.filtroTitulo) {
+				list = list.map(evento => {
+					const search = new RegExp(".*(" + this.filtroTitulo + ").*", "ig");
+					if (search.test(evento.titleEdit)) {
+						return evento
+					}
+					return false
+				})
+			}
 			return list
 		},
 		fullCalendarConfig() {
@@ -210,6 +234,11 @@ export default {
 				displayEventTime: false,
 				locale: "pt-BR",
 				defaultView: "month",
+				header: {
+					left: "prev,next today",
+					center: "title",
+					right: "month,basicWeek,basicDay"
+				},
 				buttonText: {
 					today: "Hoje",
 					month: "Mês",
@@ -217,7 +246,6 @@ export default {
 					day: "Dia"
 				},
 				height: 650,
-				eventLimit: 100,
 				eventRender: (event, element) => {
 					if (this.hasUsuariosSelected) {
 						return !!this.selected_usuarios[event.id_usuario]
@@ -235,6 +263,14 @@ export default {
 						return !!this.selected_produtos[event.id_linha_produto]
 					}
 					return true
+				},
+				dayRender(a,b){
+					const isFeriado = Feriados.filter(e => {
+						return a.format('YYYY-MM-DD') == e.date;
+					});
+					if(isFeriado.length) {
+						b.css('background-color', 'rgb(255, 207, 122)').html('<span class="feriado">'+isFeriado[0].name+'</span>');
+					}
 				}
 			}
 		},
@@ -294,23 +330,30 @@ export default {
 		}
 	},
 	methods: {
-		viewRender(view, element) {
-			var start = moment(view.start).format("YYYY/MM/DD")
-			var end = moment(view.end).format("YYYY/MM/DD")
-			var result
+		handleFiltroTitulo: debounce(function(e) {
+			  this.filtroTitulo = e.target.value;
+		}, 400),
+		loadEventos(){
+			
 			$.ajax({
-				url: "../../eventos/eventos.php",
+				url: this.BASE_URL + "eventos/eventos.php",
 				method: "POST",
 				async: false,
 				data: {
-					start: start,
-					end: end
+					start: this.start,
+					end: this.end
 				},
-				success: function(data) {
-					result = data
+				success: (data) => {
+					this.eventos = JSON.parse(data)
 				}
 			})
-			this.eventos = JSON.parse(result)
+		},
+		viewRender(view, element) {
+			this.start = moment(view.start).format("YYYY/MM/DD")
+			this.end = moment(view.end).format("YYYY/MM/DD")
+			
+			this.loadEventos();
+			
 		},
 		handleRelatorio() {
 			const form = this.$refs.form_relatorio
@@ -329,18 +372,21 @@ export default {
 		},
 		handleSelectEvent(event){
 			$.ajax({
-				url: "../../eventos/select-datas.php",
+				url: this.BASE_URL + "/eventos/select-datas.php",
 				method: "POST",
 				data: {
 					id_evento: event.id_evento
 				},
 				success: (data) => {
-					var dataResultado = ''
-					dataResultado = data.split(",")
-					event.datas_trabalho = dataResultado
+					if(event.tipo_data == 1) {
+						event.datas_trabalho = data
+					}  else if(event.tipo_data==2){
+						let _data = data.split(",")
+						event.datas_trabalho_periodo = _data[0] + ',' + _data[_data.length -1]
+					}
+					
 					this.evento = event
 					this.showModal = true
-			console.log(this.evento)
 				}
 			})
 			
@@ -435,5 +481,13 @@ export default {
 }
 .form-check.row input {
 	margin: 4px 10px 0px;
+}
+.fc-time{ display : none; }
+.feriado{
+	top: 0;
+    position: absolute;
+    font-size: 12.5px;
+    margin-left: 5px;
+    margin-top: 5px;
 }
 </style>

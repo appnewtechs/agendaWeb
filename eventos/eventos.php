@@ -9,7 +9,7 @@ $end = $_POST['end'];
 $sql = '';
 if($isAdmin == 1){
     $sql = "select events.id, events.id_evento, events.start, events.end, events.id_usuario, 
-        events.id_agenciado_ficha, events.empresa, events.id_linha_produto, events.status, events.fechado,  
+        events.id_agenciado_ficha, events.empresa, events.id_linha_produto, events.status, events.fechado, events.tipo_data, events.id_creator, 
         events.cliente, events.tipo_trabalho, CONCAT(usuario.nome, ' - ',events.title) as title, events.title as titleEdit, 
         usuario.nome as nome_usuario, CONCAT('#',trabalho.cor) as color, 
         cliente.id_tipo_cliente as id_tipo_cliente FROM `events` 
@@ -18,7 +18,7 @@ if($isAdmin == 1){
         left join `trabalho` on events.tipo_trabalho = trabalho.id_trabalho where start BETWEEN '{$start}' and '{$end}'";
 }else{
     $sql = "select events.id, events.id_evento, events.start, events.end, events.id_usuario, 
-        events.id_agenciado_ficha, events.empresa, events.id_linha_produto, events.status, events.fechado,  
+        events.id_agenciado_ficha, events.empresa, events.id_linha_produto, events.status, events.fechado, events.tipo_data, events.id_creator, 
         events.cliente, events.tipo_trabalho, CONCAT(usuario.nome, ' - ',events.title) as title, events.title as titleEdit, 
         usuario.nome as nome_usuario, CONCAT('#',trabalho.cor) as color, 
         cliente.id_tipo_cliente as id_tipo_cliente FROM `events` 
