@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<!-- FILTROS -->
-		<div class="col-sm-2">
+		<div class="col-sm-2" v-if="modo==1">
 			<div class="row filtros">
 				<div class="filtros__titulo my-8">
 					<h3>Filtros</h3>
@@ -117,12 +117,16 @@
 			</div>
 		</div>
 		<!-- AGENDA -->
-		<div class="col-sm-10">
+		<!-- <div class="col-sm-12" v-if="modo==0"> -->
+		<div class="col-sm-10" v-if="modo==1">
 			<div v-if="modo==1" class="novoEventoDiv">
 				<a href="javascript:void(0);" class="btn btn-primary pull-left h2 btn-novo novoEvento" @click="handleNovoEvento"><i class="glyphicon glyphicon-plus"></i> Novo evento</a></div>
 			<FullCalendar ref="Calendar" :events="eventosFiltrados || eventos" :config="fullCalendarConfig" @view-render="viewRender" @event-selected="handleSelectEvent"/>
 		</div>
-		<Modal v-if="showModal" :evento="evento" @close="showModal = false; evento={}" @save="loadEventos"/>
+		<div class="col-sm-12" v-if="modo!=1">
+			<FullCalendar ref="Calendar" :events="eventosFiltrados || eventos" :config="fullCalendarConfig" @view-render="viewRender" @event-selected="handleSelectEvent"/>
+		</div>
+		<Modal v-if="showModal" :evento="evento" :modo="modo" @close="showModal = false; evento={}" @save="loadEventos"/>
 	</div>
 </template>
 <script>

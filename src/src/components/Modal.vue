@@ -15,7 +15,7 @@
 						<div class="form-group">
 							<label class="control-label col-sm-2 required">Usuário</label>
 							<div class="col-sm-10">
-								<select name="id_usuario" class="custom-select form-control" required="true" v-model="dados.id_usuario">
+								<select name="id_usuario" class="custom-select form-control" required="true" v-model="dados.id_usuario" :disabled="!canEdit">
 									<option v-for="usuario in usuariosSelect" :key="usuario.id_usuario" :value="usuario.id_usuario">{{usuario.nome}}</option>
 								</select>
 							</div>
@@ -24,7 +24,7 @@
 							<label class="control-label col-sm-2">Empresa</label>
 
 							<div class="col-sm-10">
-								<select name="empresa" class="custom-select form-control" v-model="dados.id_empresa">
+								<select name="empresa" class="custom-select form-control" v-model="dados.id_empresa" :disabled="!canEdit">
 									<option v-for="empresa in empresasSelect" :key="empresa.id_empresa" :value="empresa.id_empresa">{{empresa.nome_fantasia}}</option>
 								</select>
 							</div>
@@ -33,7 +33,7 @@
 							<label class="control-label col-sm-2 required">Tipo de Trabalho</label>
 
 							<div class="col-sm-10">
-								<select name="tipo_trabalho" class="custom-select form-control" required="true" v-model="dados.tipo_trabalho">
+								<select name="tipo_trabalho" class="custom-select form-control" required="true" v-model="dados.tipo_trabalho" :disabled="!canEdit">
 									<option v-for="trabalho in tiposTrabalhoSelect" :key="trabalho.id_trabalho" :value="trabalho.id_trabalho">{{trabalho.descricao}}</option>
 								</select>
 							</div>
@@ -41,7 +41,7 @@
 						<div class="form-group">
 							<label for="title" class="col-sm-2 control-label required">Titulo</label>
 							<div class="col-sm-10">
-								<input type="text" name="titleEdit" class="form-control" id="title" placeholder="Titulo" required="true" v-model="dados.titleEdit">
+								<input type="text" name="titleEdit" class="form-control" id="title" placeholder="Titulo" required="true" v-model="dados.titleEdit" :disabled="!canEdit">
 							</div>
 						</div>
 						<div class="form-group">
@@ -59,19 +59,19 @@
 						<div class="form-group" :class="{'hidden' : dados.tipo_data==2}">
 							<label for="title" class="col-sm-2 control-label required">Datas do Evento</label>
 							<div class="col-sm-10">
-								<input type="text" required="true" class="form-control multipledates dates" autocomplete="off" name="datas_trabalho" placeholder="Datas do Evento" :value="dados.datas_trabalho" @blur.capture="dados.datas_trabalho = $event.target.value;">
+								<input type="text" required="true" class="form-control multipledates dates" autocomplete="off" name="datas_trabalho" placeholder="Datas do Evento" :value="dados.datas_trabalho" @blur.capture="dados.datas_trabalho = $event.target.value;" :disabled="!canEdit">
 							</div>
 						</div>
 						<div class="form-group" :class="{'hidden' : dados.tipo_data==1}">
 							<label for="title" class="col-sm-2 control-label required">Data Período</label>
 							<div class="col-sm-10">
-								<input type="text" required="true" class="form-control duasdatas dates" autocomplete="off" name="datas_trabalho_periodo" placeholder="Datas do Evento" :value="dados.datas_trabalho_periodo" @blur.capture="dados.datas_trabalho_periodo = $event.target.value;">
+								<input type="text" required="true" class="form-control duasdatas dates" autocomplete="off" name="datas_trabalho_periodo" placeholder="Datas do Evento" :value="dados.datas_trabalho_periodo" @blur.capture="dados.datas_trabalho_periodo = $event.target.value;" :disabled="!canEdit">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="title" class="col-sm-2 control-label">Status</label>
 							<div class="col-sm-10">
-								<select class="form-control" name="status" v-model="dados.status">
+								<select class="form-control" name="status" v-model="dados.status" :disabled="!canEdit">
 									<option value="1">Confirmado</option>
 									<option value="0">A confirmar</option>
 								</select>
@@ -89,7 +89,7 @@
 						<div class="form-group">
 							<label class="control-label col-sm-2">Cliente</label>
 							<div class="col-sm-10">
-								<select name="cliente" class="custom-select form-control" v-model="dados.cliente">
+								<select name="cliente" class="custom-select form-control" v-model="dados.cliente" :disabled="!canEdit">
 									<option v-for="cliente in clientesSelect" :key="cliente.id_cliente" :value="cliente.id_cliente">{{cliente.nome_fantasia}}</option>
 								</select>
 							</div>
@@ -98,7 +98,7 @@
 							<div class="col-sm-offset-2 col-sm-10">
 								<div class="checkbox">
 									<label class="text-danger">
-										<input type="checkbox" name="delete" v-model="dados.delete"> Deletar Evento
+										<input type="checkbox" name="delete" v-model="dados.delete" :disabled="!canEdit"> Deletar Evento
 									</label>
 								</div>
 							</div>
@@ -122,6 +122,7 @@ export default {
 				return {}
 			}
 		},
+		modo: String,
 		form: String
 	},
 	data() {
@@ -152,10 +153,10 @@ export default {
 	},
 	computed: {
 		canEdit(){
-			if(this.dados.id_creator == this.usuario) {
+			if(this.dados.id_creator == this.usuario && this.modo == 1) {
 				return true;
 			}
-			return !this.dados.id_evento || this.dados.fechado == 0
+			return (!this.dados.id_evento || this.dados.fechado == 0) && this.modo == 1
 		}
 	},
 	methods: {
@@ -264,7 +265,7 @@ export default {
 		
 	},
 	mounted() {
-		
+		console.log(this.modo)
 		this.dados = {
 			id_evento: this.evento.id_evento,
 			titleEdit: this.evento.titleEdit,
