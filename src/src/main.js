@@ -16,7 +16,11 @@ Vue.prototype.$http = Axios;
 if(process.env.NODE_ENV != 'production') {
   Vue.prototype.BASE_URL = "http://localhost:8080/"
 } else  {
+<<<<<<< HEAD
   Vue.prototype.BASE_URL = "/newtech2/";
+=======
+  Vue.prototype.BASE_URL = "/newtech/";
+>>>>>>> 0b732096985b2edfa0c8384cca50e645f4e9e56c
 }
 
 new Vue({

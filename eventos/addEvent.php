@@ -37,7 +37,7 @@ if($add_selected_trabalho != ''){
 }
 if (isset($_POST['titleEdit']) && (isset($_POST['datas_trabalho_periodo']) || isset($_POST['datas_trabalho'])) && isset($_POST['id_usuario'])){
 	
-	$title = utf8_decode($_POST['titleEdit']);
+	$title = ($_POST['titleEdit']);
 	$id_usuario = $_POST['id_usuario'];
 	$id_creator = $_POST['id_creator'];
 	$fechado = $_POST['fechado'];

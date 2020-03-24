@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<!-- FILTROS -->
-		<div class="col-sm-2">
+		<div class="col-sm-2" v-if="modo==1">
 			<div class="row filtros">
 				<div class="filtros__titulo my-8">
 					<h3>Filtros</h3>
@@ -117,17 +117,29 @@
 			</div>
 		</div>
 		<!-- AGENDA -->
-		<div class="col-sm-10">
+		<!-- <div class="col-sm-12" v-if="modo==0"> -->
+		<div class="col-sm-10" v-if="modo==1">
 			<div v-if="modo==1" class="novoEventoDiv">
 				<a href="javascript:void(0);" class="btn btn-primary pull-left h2 btn-novo novoEvento" @click="handleNovoEvento"><i class="glyphicon glyphicon-plus"></i> Novo evento</a></div>
 			<FullCalendar ref="Calendar" :events="eventosFiltrados || eventos" :config="fullCalendarConfig" @view-render="viewRender" @event-selected="handleSelectEvent"/>
 		</div>
+<<<<<<< HEAD
 		<Modal v-if="showModal" :evento="evento" @close="showModal = false; evento={}" @save="loadEventos"/>
+=======
+		<div class="col-sm-12" v-if="modo!=1">
+			<FullCalendar ref="Calendar" :events="eventosFiltrados || eventos" :config="fullCalendarConfig" @view-render="viewRender" @event-selected="handleSelectEvent"/>
+		</div>
+		<Modal v-if="showModal" :evento="evento" :modo="modo" @close="showModal = false; evento={}" @save="loadEventos"/>
+>>>>>>> 0b732096985b2edfa0c8384cca50e645f4e9e56c
 	</div>
 </template>
 <script>
 import { FullCalendar } from "vue-full-calendar"
 import Modal from "./components/Modal.vue"
+<<<<<<< HEAD
+=======
+import Feriados from "./util/mock-feriados"
+>>>>>>> 0b732096985b2edfa0c8384cca50e645f4e9e56c
 import debounce from "debounce"
 
 function getTrueKeysValues(obj) {
@@ -262,6 +274,14 @@ export default {
 						return !!this.selected_produtos[event.id_linha_produto]
 					}
 					return true
+				},
+				dayRender(a,b){
+					const isFeriado = Feriados.filter(e => {
+						return a.format('YYYY-MM-DD') == e.date;
+					});
+					if(isFeriado.length) {
+						b.css('background-color', 'rgb(255, 207, 122)').html('<span class="feriado">'+isFeriado[0].name+'</span>');
+					}
 				}
 			}
 		},
@@ -474,4 +494,14 @@ export default {
 	margin: 4px 10px 0px;
 }
 .fc-time{ display : none; }
+<<<<<<< HEAD
+=======
+.feriado{
+	top: 0;
+    position: absolute;
+    font-size: 12.5px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+>>>>>>> 0b732096985b2edfa0c8384cca50e645f4e9e56c
 </style>

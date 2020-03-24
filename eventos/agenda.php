@@ -100,5 +100,10 @@ if (isset($_SESSION["danger"])) {
 		var _DADOS = <?= json_encode($dados); ?>
 </script>
 
+<<<<<<< HEAD
 <script src="<?php echo $base_url; ?>/js/vendor9.js"></script>
 <script src="<?php echo $base_url; ?>/js/app9.js"></script>
+=======
+<script src="http://localhost:8081/app.js"></script>
+<?php exit ?>
+>>>>>>> 0b732096985b2edfa0c8384cca50e645f4e9e56c

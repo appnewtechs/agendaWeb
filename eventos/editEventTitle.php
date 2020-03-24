@@ -55,7 +55,7 @@ if (isset($_POST['delete']) && isset($_POST['id_evento'])){
 	exit();
 }elseif (isset($_POST['titleEdit']) && isset($_POST['id_evento'])){
 	$id = $_POST['id_evento'];
-	$title = utf8_decode($_POST['titleEdit']);
+	$title = ($_POST['titleEdit']);
 	$id_evento = $_POST['id_evento'];
 	$id_usuario = $_POST['id_usuario'];
 	$id_creator = $_POST['id_creator'];
