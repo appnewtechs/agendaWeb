@@ -1,7 +1,7 @@
 <?php  
 require_once "../bootstrap.php";
 
-$usuario = $_POST["usuario"];
+$usuario = $_POST["id_usuario"];
 $empresa = "";
 $query = "select * from usuario where id_usuario = '{$usuario}'";
 $resultado = mysqli_query($conexao, $query);

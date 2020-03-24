@@ -3,7 +3,7 @@
 -------------------------------------------- */
 define('DEBUG', 0);
 
-$base_url = 'http://localhost:8080';
+$base_url = 'http://localhost:8081';
 
 define('BASE_URL', $base_url);
 
@@ -15,10 +15,10 @@ if (DEBUG) {
 
 /* BANCO
 -------------------------------------------- */
-define('DB_SERVER', 'newtech-mysql');
-define('DB_NAME', 'db');
+define('DB_SERVER', 'localhost');
+define('DB_NAME', 'newtech');
 define('DB_USER', 'root');
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'BB320011005b$');
 $conexao = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 
 /* INCLUDES

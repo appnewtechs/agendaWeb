@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 verificaUsuario();
 ?>
 <html>
@@ -17,8 +17,9 @@ verificaUsuario();
     <link rel="stylesheet" href="<?php echo $base_url; ?>/css/popup.css">
     <link rel='stylesheet' href='<?php echo $base_url; ?>/js/fullcalendar/fullcalendar.print.min.css' media='print' />
     <link rel='stylesheet' href='<?php echo $base_url; ?>/js/fullcalendar/fullcalendar.css' />
-    <link rel='stylesheet' href='<?php echo $base_url; ?>/table/css/defaultTheme.css' />
+    <!-- <link rel='stylesheet' href='<?php echo $base_url; ?>/table/css/defaultTheme.css' /> -->
     <link rel='stylesheet' href='<?php echo $base_url; ?>/multipledates/jquery-ui.multidatespicker.css' />
+    <link rel='stylesheet' href='<?php echo $base_url; ?>/css/app9.css' />
     <script src='<?php echo $base_url; ?>/js/fullcalendar/lib/moment.min.js'></script>
     <script src="<?php echo $base_url; ?>/js/jquery-3.2.1.min.js"></script>
     <script src="<?php echo $base_url; ?>/js/jquery-ui.min.js"></script>
@@ -38,7 +39,8 @@ verificaUsuario();
     <script src="<?php echo $base_url; ?>/datepick/js/jquery.plugin.js"></script>
     <script src="<?php echo $base_url; ?>/datepick/js/jquery.datepick.js"></script>
     <script src="<?php echo $base_url; ?>/datepick/js/jquery.datepick-pt-BR.js"></script>
-    <script src="<?php echo $base_url; ?>/table/jquery.fixedheadertable.min.js"></script>
+    <script src="<?php echo $base_url; ?>/table/jquery.fixedheadertable.js"></script>
+    <script src="<?php echo $base_url; ?>/js/mock-feriados.js"></script>
 
     <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>/datepick/css/smoothness.datepick.css">
     <script src="<?php echo $base_url; ?>/js/autosize.min.js"></script>
@@ -132,7 +134,7 @@ verificaUsuario();
             <div>
                 <ul class="nav navbar-nav">
                     <?php if (empty($isCliente)) { ?>
-                    <li><a href="<?php echo $base_url; ?>/home.php">Home</a></li>
+                        <li><a href="<?php echo $base_url; ?>/home.php">Home</a></li>
                     <?php
 
                 }
@@ -140,44 +142,39 @@ verificaUsuario();
                     switch ($value) {
                         case '1':
                             ?>
-                    <li class="nav-item dropdown admin">
-                        <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink">Admin</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="<?php echo $base_url; ?>/admin/usuarios.php">Usuário</a>
-                            <a class="dropdown-item" href="<?php echo $base_url; ?>/admin/perfil.php">Perfil</a>
-                            <a class="dropdown-item" href="<?php echo $base_url; ?>/admin/aniversario.php">Aniversariantes</a>
-                            <a class="dropdown-item" href="<?php echo $base_url; ?>/admin/telalogin.php">Tela de Login</a>
-                            <a class="dropdown-item" href="<?php echo $base_url; ?>/admin/telahome.php?id=1">Tela Home</a>
-                            <a class="dropdown-item" href="<?php echo $base_url; ?>/admin/telahome.php?id=2">Tela Admin</a>
-                            <a class="dropdown-item" href="<?php echo $base_url; ?>/admin/telahome.php?id=3">Tela Cadastros</a>
-                            <a class="dropdown-item" href="<?php echo $base_url; ?>/admin/telahome.php?id=6">Tela Agendas</a>
-                        </div>
-                    </li>
-                    <?php
-                    break;
-                case '2':
-                    ?>
-                    <li class="nav-item dropdown cadastros">
-                        <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink">Cadastros</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="<?php echo $base_url; ?>/cadastros/cliente.php">Clientes</a>
-                            <a class="dropdown-item" href="<?php echo $base_url; ?>/cadastros/tipo-cliente.php">Tipo de Cliente</a>
-                            <a class="dropdown-item" href="<?php echo $base_url; ?>/cadastros/empresa.php">Empresas</a>
-                            <a class="dropdown-item" href="<?php echo $base_url; ?>/cadastros/tipo-empresa.php">Tipo de Empresa</a>
-                            <a class="dropdown-item" href="<?php echo $base_url; ?>/cadastros/trabalho.php">Tipo de Trabalho</a>
-                            <a class="dropdown-item" href="<?php echo $base_url; ?>/cadastros/linha-produto.php">Linha de Produto</a>
-                            <!-- <a class="dropdown-item" href="<?php echo $base_url; ?>/cadastros/contato.php">Contatos</a> -->
-                        </div>
-                    </li>
-                    <?php
-                    break;
-                case '3':
-                    ?> <li><a href="<?php echo $base_url; ?>/eventos/agenda.php">Agendas</a></li>
-                    <?php
-                    break;
-            }
-        }
-        ?>
+                            <li class="nav-item dropdown admin">
+                                <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink">Admin</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="<?php echo $base_url; ?>/admin/usuarios.php">Usuário</a>
+                                    <a class="dropdown-item" href="<?php echo $base_url; ?>/admin/perfil.php">Perfil</a>
+                                    <a class="dropdown-item" href="<?php echo $base_url; ?>/admin/aniversario.php">Aniversariantes</a>
+                                </div>
+                            </li>
+                            <?php
+                            break;
+                        case '2':
+                            ?>
+                            <li class="nav-item dropdown cadastros">
+                                <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink">Cadastros</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="<?php echo $base_url; ?>/cadastros/cliente.php">Clientes</a>
+                                    <a class="dropdown-item" href="<?php echo $base_url; ?>/cadastros/tipo-cliente.php">Tipo de Cliente</a>
+                                    <a class="dropdown-item" href="<?php echo $base_url; ?>/cadastros/empresa.php">Empresas</a>
+                                    <a class="dropdown-item" href="<?php echo $base_url; ?>/cadastros/tipo-empresa.php">Tipo de Empresa</a>
+                                    <a class="dropdown-item" href="<?php echo $base_url; ?>/cadastros/trabalho.php">Tipo de Trabalho</a>
+                                    <a class="dropdown-item" href="<?php echo $base_url; ?>/cadastros/linha-produto.php">Linha de Produto</a>
+                                    <!-- <a class="dropdown-item" href="<?php echo $base_url; ?>/cadastros/contato.php">Contatos</a> -->
+                                </div>
+                            </li>
+                            <?php
+                            break;
+                        case '3':
+                            ?> <li><a href="<?php echo $base_url; ?>/eventos/agenda.php">Agendas</a></li>
+                            <?php
+                            break;
+                    }
+                }
+                ?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item dropdown perfil">
@@ -193,7 +190,7 @@ verificaUsuario();
                             ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="<?php echo $base_url; ?>/perfil/editarperfil.php">Perfil</a>
+                            <a class="dropdown-item" href="<?php echo $base_url; ?>/admin/altera-perfil.php">Perfil</a>
                             <a class="dropdown-item" data-toggle="modal" data-target=".bs-sobre-modal-sm">Sobre</a>
                             <a class="dropdown-item" href="<?php echo $base_url; ?>/logout.php">Sair</a>
                         </div>
@@ -235,4 +232,4 @@ verificaUsuario();
     </div>
     <!-- FIM MODAL -->
     <div class="container">
-        <div class="principal"> 
+        <div class="principal">

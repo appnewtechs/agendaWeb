@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once "bootstrap.php";
 require "cabecalho.php";
 ?>

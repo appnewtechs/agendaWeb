@@ -89,7 +89,6 @@ jQuery.extend(jQuery.validator.messages, {
 </script>
 <footer>
   <div class="navbar navbar-default navbar-bottom sombra--menor--rodape">
-    <h4>MonsterCave</h4>
   </div>
 </footer>
 </html>
